@@ -28,7 +28,7 @@
 :root {
   --ink: #29252e;
   --muted: #665e68;
-  --plum: #4f4054;
+  --plum: #443149;
   --plum-deep: #382c3d;
   --rust: #b06028;
   --rust-dark: #8e481e;
@@ -218,7 +218,7 @@ a:focus-visible,
 .site-header-title h1 {
   max-width: 900px;
   margin: 0;
-  color: var(--plum);
+  color: var(--rust);
   letter-spacing: normal;
   line-height: 1.4;
 }
@@ -283,7 +283,7 @@ a:focus-visible,
 
 .hero h2 {
   margin: 0 0 20px;
-  color: #fff;
+  color: #ffffff;
   line-height: 1.35;
   letter-spacing: normal;
 }
@@ -345,7 +345,7 @@ a:focus-visible,
 }
 
 .trust-band h2 span {
-  color: #edc7a7;
+  color: #ff9a47;
 }
 
 /* 6. Features and shared checklists */
@@ -450,7 +450,7 @@ a:focus-visible,
 .callout h2 {
   max-width: 920px;
   margin: 0 auto;
-  color: var(--plum);
+  color: var(--rust);
   line-height: 1.5;
 }
 
