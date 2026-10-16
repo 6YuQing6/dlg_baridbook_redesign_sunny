@@ -1,17 +1,584 @@
-.cta-button {
-  display: inline-block;
-  padding: 0.8em 1.2em;
-  font-family: "Roboto", Arial, sans-serif;
-  font-size: 2.5rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-kerning: auto;
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Oswald:wght@500;600&display=swap");
+
+/*
+ * Page-specific styles, loaded after bootstrap-page.css.
+ *
+ * Contents:
+ *   1. Colors and base typography
+ *   2. Header
+ *   3. Hero and background pattern
+ *   4. Order buttons
+ *   5. Trust banner
+ *   6. Features and shared checklists
+ *   7. Coverage
+ *   8. Callout
+ *   9. Benefits
+ *  10. Footer
+ *  11. Responsive layouts and reduced motion
+ */
+
+/* 1. Colors and base typography */
+:root {
+  --ink: #29252e;
+  --muted: #665e68;
+  --plum: #4f4054;
+  --plum-deep: #382c3d;
+  --rust: #b06028;
+  --rust-dark: #8e481e;
+  --paper: #ffffff;
+  --surface: #ffffff;
+  --line: #ded6cd;
+  --soft-plum: #eee9ef;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 0 !important;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font:
+    400 17px/1.85 "DM Sans",
+    sans-serif;
+}
+h1,
+h2,
+h3 {
+  font-family: "Oswald", sans-serif;
+  color: var(--plum);
+  font-weight: 500;
+}
+
+p {
+  font: inherit;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--plum);
+}
+
+a:hover {
+  color: var(--rust-dark);
+}
+
+a:focus-visible,
+.cta-button:focus-visible {
+  outline: 3px solid #d59763;
+  outline-offset: 4px;
+}
+.container {
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+/* 2. Header */
+.site-header {
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.site-header > .row {
+  width: 100% !important;
+  margin: 0;
+}
+
+.site-header-content {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0;
+}
+.site-header-content > div:first-child {
+  flex: 0 0 auto;
+}
+
+.site-header-content .navbar-brand {
+  padding: 0;
+  margin: 0;
+}
+
+.site-header-content .navbar-brand img {
+  display: block;
+  width: 74px;
+  height: auto;
+}
+
+.site-header-title {
+  padding: 0;
+}
+
+.site-header-title h1 {
+  max-width: 900px;
+  color: var(--plum);
+  font-size: clamp(22px, 3vw, 36px);
+  letter-spacing: normal;
+  line-height: 1.4;
+}
+/* 3. Hero and background pattern */
+.page-shell {
+  width: 100%;
+  padding: 0;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: clamp(36px, 6vw, 76px) max(5vw, calc((100% - 1160px) / 2));
   color: #fff;
-  background: linear-gradient(to bottom, #7caf52 0%, #62853d 100%);
-  line-height: 1;
-  border-radius: 6px;
-  box-shadow: 0 14px 12px -8px rgba(0, 0, 0, 0.35);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  margin-top: 1em;
+  /* Layers: horizontal grid, vertical grid, plum overlay, licence photo. */
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 4px
+      4px repeat,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 /
+      4px 4px repeat,
+    linear-gradient(
+      90deg,
+      rgba(43, 33, 48, 0.92) 0%,
+      rgba(63, 47, 68, 0.84) 48%,
+      rgba(52, 40, 56, 0.67) 100%
+    ),
+    url("../images/id-reference-hero.jpg") center 48% / cover no-repeat;
+}
+.hero .row,
+.hero .row > div {
+  margin: 0;
+  width: 100%;
+}
+
+.hero .row {
+  display: flex;
+  align-items: center;
+  width: 100% !important;
+}
+
+.hero .hero-product,
+.hero .hero-copy {
+  float: none;
+  width: 50%;
+  padding: 20px 28px;
+}
+
+.hero .hero-product {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-product img {
+  max-height: 560px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 24px rgba(20, 14, 23, 0.35));
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: #e7c5a6;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.hero h2 {
+  margin: 0 0 20px;
+  color: #fff;
+  font-size: clamp(32px, 4.3vw, 54px);
+  line-height: 1.35;
+  letter-spacing: normal;
+}
+
+.hero-copy > p:not(.eyebrow) {
+  max-width: 540px;
+  margin-bottom: 28px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(18px, 1.8vw, 21px);
+}
+
+/* 4. Order buttons */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 66px;
+  max-width: 100%;
+  padding: 18px 28px;
+  border: 1px solid var(--rust);
+  border-radius: 4px;
+  background: var(--rust);
+  color: #fff !important;
+  font:
+    600 20px/1.5 "Oswald",
+    sans-serif;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none !important;
+  box-shadow: 0 8px 20px rgba(35, 24, 37, 0.16);
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+.cta-button:hover {
+  background: var(--rust-dark);
+  border-color: var(--rust-dark);
+  color: #fff;
+}
+
+/* 5. Trust banner */
+.trust-band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 27px 24px;
+  background: var(--plum);
+  color: #fff;
+  text-align: left;
+}
+.trust-band img {
+  width: 72px;
+  height: auto;
+}
+
+.trust-band h2 {
+  max-width: 700px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(22px, 3vw, 31px);
+  line-height: 1.45;
+}
+
+.trust-band h2 span {
+  color: #edc7a7;
+}
+
+/* 6. Features and shared checklists */
+.content-section {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: clamp(54px, 7vw, 86px) 28px;
+}
+
+.features-row {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.features-copy,
+.features-image {
+  float: none;
+  width: 50%;
+}
+
+.features-copy h2,
+.coverage h2 {
+  margin: 0 0 22px;
+  font-size: clamp(27px, 3vw, 36px);
+  line-height: 1.45;
+  letter-spacing: normal;
+}
+
+.features-list,
+.benefits-list {
+  padding: 0;
+  margin: 0;
+}
+
+.features-list li,
+.benefits-list li {
+  position: relative;
+  padding: 12px 0 12px 34px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font:
+    500 18px/1.8 "DM Sans",
+    sans-serif;
+  list-style: none;
+}
+/* Both lists use the original filled-circle icon and the same orange. */
+.features-list li::before,
+.benefits-list li::before {
+  position: absolute;
+  top: 19px;
+  left: 0;
+  width: 19px;
+  height: 19px;
+  color: var(--rust);
+  content: "\e084";
+  font: normal 19px/1 "Glyphicons Halflings";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+.features-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.features-image img {
+  height: 420px;
+  width: auto;
+  max-width: 100%;
+  padding: 8px;
+  object-fit: contain;
+}
+
+/* 7. Coverage */
+.coverage {
+  width: 100%;
+  padding: clamp(42px, 6vw, 68px) 24px;
+  background: var(--soft-plum);
+  text-align: center;
+}
+.coverage-inner {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.coverage h2 {
+  margin-bottom: 20px;
+}
+
+.coverage p {
+  margin: 0 auto 28px;
+  color: #46404a;
+  font-size: 18px;
+}
+
+.coverage strong {
+  font-weight: inherit;
+}
+
+/* 8. Callout */
+.callout {
+  padding: 32px 24px;
+  background: #ffffff;
+  color: var(--plum);
+  text-align: center;
+}
+.callout h2 {
+  max-width: 920px;
+  margin: 0 auto;
+  color: var(--plum);
+  font-size: clamp(23px, 3.2vw, 36px);
+  line-height: 1.5;
+}
+
+/* 9. Benefits */
+.benefits-section {
+  width: 100%;
+  padding: clamp(50px, 7vw, 78px) max(5vw, calc((100% - 1120px) / 2));
+  background: var(--plum-deep);
+  color: #fff;
+}
+
+.benefits-inner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.benefits-copy,
+.benefits-art {
+  float: none;
+  width: 50%;
+}
+
+.benefits-list li {
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.93);
+}
+
+.benefits-art {
+  text-align: center;
+}
+
+.benefits-art img {
+  max-width: min(100%, 350px);
+  max-height: 250px;
+  object-fit: contain;
+}
+
+.benefits-cta {
+  margin-top: 22px;
+}
+
+/* 10. Footer */
+.site-footer {
+  padding: 34px 24px 28px;
+  background: #28222b;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  font-size: 14px;
+}
+.site-footer a {
+  color: #ead2bf;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.site-footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  margin: 0 auto 14px;
+}
+
+.footer-links a {
+  display: inline-block;
+}
+
+.footer-brand {
+  margin: 20px auto 12px;
+}
+
+.footer-brand img {
+  width: 151px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.footer-copyright {
+  line-height: 1.9;
+}
+
+/* 11. Responsive layouts and reduced motion */
+/* Medium screens: full-width sections, with image/text columns retained. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .site-header {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+/* Small screens: stack the image/text sections. */
+@media (max-width: 767px) {
+  .container {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .site-header {
+    padding: 14px 18px;
+  }
+
+  .site-header-content {
+    gap: 14px;
+  }
+
+  .site-header-content .navbar-brand img {
+    width: 58px;
+  }
+
+  .site-header-title h1 {
+    font-size: 21px;
+  }
+
+  .hero {
+    padding: 28px 18px 42px;
+    background-position: 57% center;
+  }
+
+  .hero .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero .hero-product,
+  .hero .hero-copy {
+    width: 100%;
+    padding: 12px 6px;
+  }
+
+  .hero-product img {
+    max-height: 370px;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-copy > p:not(.eyebrow) {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .trust-band {
+    gap: 16px;
+    padding: 22px 18px;
+  }
+
+  .trust-band img {
+    width: 52px;
+  }
+
+  .content-section {
+    padding: 48px 22px;
+  }
+
+  .features-row,
+  .benefits-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .features-copy,
+  .features-image,
+  .benefits-copy,
+  .benefits-art {
+    width: 100%;
+  }
+
+  .features-image img {
+    height: 350px;
+  }
+
+  .benefits-section {
+    padding: 48px 22px;
+  }
+
+  .benefits-art {
+    order: -1;
+  }
+
+  .footer-links {
+    gap: 10px 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
