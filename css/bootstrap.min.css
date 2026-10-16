@@ -1,59 +1,57 @@
-/*!
- * Bootstrap v3.3.4 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-
 /*
- * Legacy Bootstrap foundation, loaded before redesign.css.
- * Page colors, component styles, and responsive refinements live there.
- * Keep the order of these legacy rules intact to preserve the cascade.
+ * Minimal browser foundation.
+ * The filename is retained so existing HTML links continue to work.
+ *
+ * No Bootstrap grid, typography, colors, icon fonts, or component overrides.
+ * All page styling and text sizes are defined in redesign.css.
  */
 
-/* Browser normalization */
 html {
-  font-family: "Source Sans Pro", sans-serif;
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
 }
 
 a {
   background-color: transparent;
-}
-
-a:active,
-a:hover {
-  outline: 0;
+  text-decoration: none;
 }
 
 strong {
   font-weight: 700;
 }
 
-h1 {
-  margin: 0.67em 0;
-  font-size: 2em;
-}
-
 img {
   border: 0;
+  vertical-align: middle;
 }
 
-/* Print styles */
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+h1,
+h2 {
+  margin: 20px 0 10px;
+}
+
+p,
+ul {
+  margin: 0 0 10px;
+}
+
+/* Retained image helper used by the inside-page product image. */
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Print-only behavior; never changes the screen layout. */
 @media print {
   *,
-  :after,
-  :before {
+  *::before,
+  *::after {
     color: #000 !important;
     text-shadow: none !important;
-    background: 0 0 !important;
-    -webkit-box-shadow: none !important;
+    background: none !important;
     box-shadow: none !important;
   }
 
@@ -62,16 +60,13 @@ img {
     text-decoration: underline;
   }
 
-  a[href]:after {
+  a[href]::after {
     content: " (" attr(href) ")";
   }
 
   img {
-    page-break-inside: avoid;
-  }
-
-  img {
     max-width: 100% !important;
+    page-break-inside: avoid;
   }
 
   h2,
@@ -83,335 +78,4 @@ img {
   h2 {
     page-break-after: avoid;
   }
-}
-
-/* Icon font used by the filled-circle checkmarks */
-@font-face {
-  font-family: "Glyphicons Halflings";
-  src: url(../fonts/glyphicons-halflings-regular.eot);
-  src:
-    url(../fonts/glyphicons-halflings-regular.woff2) format("woff2"),
-    url(../fonts/glyphicons-halflings-regular.woff) format("woff"),
-    url(../fonts/glyphicons-halflings-regular.ttf) format("truetype");
-}
-
-.glyphicon {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-family: "Glyphicons Halflings";
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding-right: 6px;
-  color: #87bc5d;
-}
-
-.glyphicon-ok-sign:before {
-  content: "\e084";
-}
-
-/* Base box sizing, typography, links, and images */
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-:after,
-:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 10px;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.42857143;
-  color: #333;
-  background-color: #fff;
-}
-
-a {
-  color: #337ab7;
-  text-decoration: none;
-}
-
-a:focus,
-a:hover {
-  color: #23527c;
-  text-decoration: underline;
-}
-
-a:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-
-img {
-  vertical-align: middle;
-}
-
-.img-responsive {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  padding: 10px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-h1,
-h2 {
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.1;
-  color: inherit;
-}
-
-h1,
-h2 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-h1 {
-  font-size: 42px;
-}
-
-h2 {
-  font-size: 36px;
-}
-
-p {
-  margin: 0 0 10px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-ul {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-/* Container and legacy grid */
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 100%;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  .container {
-    width: 100%;
-  }
-}
-
-.row {
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.col-lg-12,
-.col-lg-6,
-.col-sm-6,
-.col-md-12,
-.col-md-4,
-.col-md-6,
-.col-md-8 {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-@media (min-width: 768px) {
-  .col-sm-6 {
-    float: left;
-    width: 50%;
-  }
-}
-
-@media (min-width: 992px) {
-  .col-md-12,
-  .col-md-4,
-  .col-md-6,
-  .col-md-8 {
-    float: left;
-  }
-
-  .col-md-12 {
-    width: 100%;
-  }
-
-  .col-md-8 {
-    width: 66.66666667%;
-  }
-
-  .col-md-6 {
-    width: 50%;
-  }
-
-  .col-md-4 {
-    width: 33.33333333%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .col-lg-12,
-  .col-lg-6 {
-    float: left;
-  }
-
-  .col-lg-12 {
-    width: 100%;
-  }
-
-  .col-lg-6 {
-    width: 50%;
-  }
-}
-
-/* Legacy header defaults; refined in redesign.css */
-.navbar-brand {
-  float: left;
-  height: auto;
-  padding: 8px 15px;
-  font-size: 18px;
-  line-height: 20px;
-  align-items: center;
-}
-
-.navbar-brand:focus,
-.navbar-brand:hover {
-  text-decoration: none;
-}
-
-.navbar-brand > img {
-  display: block;
-  width: 72px;
-  height: auto;
-}
-
-.site-header-content {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 4px 15px 0;
-  text-align: left;
-}
-
-.site-header-content > div:first-child {
-  flex: 0 0 auto;
-}
-
-.site-header-content .navbar-brand {
-  display: block;
-  float: none;
-  padding: 0;
-}
-
-.site-header-title {
-  flex: 1 1 auto;
-  padding-top: 0;
-}
-
-.site-header-title h1 {
-  margin: 0;
-  font-size: clamp(36px, 2.5vw, 42px);
-  line-height: 1.2;
-  text-align: left;
-}
-
-/* Clearfix helpers and older browser support */
-.container:after,
-.container:before,
-.row:after,
-.row:before {
-  display: table;
-  content: " ";
-}
-
-.container:after,
-.row:after {
-  clear: both;
-}
-
-@-ms-viewport {
-  width: device-width;
-}
-
-/* Legacy page overrides; retain their order below the foundation rules */
-h1 {
-  font-family: "Oswald", sans-serif;
-}
-
-p {
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-body {
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-@media (min-width: 1200px) {
-  .row {
-    width: 1170px !important;
-    margin-right: auto;
-    margin-left: auto;
-  }
-}
-
-@media (min-width: 1200px) {
-  .site-header > .row {
-    width: 100% !important;
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-}
-
-ul li {
-  font-family: "Oswald";
-  font-size: 1.8em;
-  list-style-type: none;
-  line-height: 1.6em;
-}
-
-a {
-  color: #fff;
-  text-decoration: none;
-}
-
-a:visited {
-  color: #fff;
 }

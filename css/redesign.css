@@ -4,7 +4,7 @@
  * Page-specific styles, loaded after bootstrap-page.css.
  *
  * Contents:
- *   1. Colors and base typography
+ *   1. Colors and typography (all text sizes live here)
  *   2. Header
  *   3. Hero and background pattern
  *   4. Order buttons
@@ -17,8 +17,8 @@
  *  11. Responsive layouts and reduced motion
  */
 
-/* 1. Colors and base typography */
-/* Include padding and borders in declared sizes, even without Bootstrap's reset. */
+/* 1. Colors and typography */
+/* Keep this reset here so the page is portable to other projects. */
 *,
 *::before,
 *::after {
@@ -44,26 +44,119 @@ html {
   scroll-behavior: smooth;
 }
 
+/*
+ * TYPOGRAPHY SCALE — edit these values to resize text across the page.
+ * Heading tags control the default sizes. Named heading variants preserve
+ * the larger hero and smaller banner without changing the HTML hierarchy.
+ */
+:root {
+  --font-size-h1: clamp(38px, 3vw, 42px);
+  --font-size-h1-mobile: 28px;
+  --font-size-h2: clamp(36px, 3vw, 48px);
+  --font-size-h3: clamp(26px, 3vw, 32px);
+  --font-size-h4: 24px;
+  --font-size-h5: 22px;
+  --font-size-h6: 20px;
+  --font-size-display: clamp(32px, 4.3vw, 54px);
+  --font-size-callout: clamp(30px, 3.2vw, 36px);
+  --font-size-body: 20px;
+  --font-size-lead: clamp(22px, 1.8vw, 26px);
+  --font-size-list: 21px;
+  --font-size-button: 20px;
+  --font-size-small: 16px;
+}
+
 body {
-  padding-top: 0 !important;
+  padding-top: 0;
   margin: 0;
   background: var(--paper);
   color: var(--ink);
   font:
-    400 17px/2 "DM Sans",
+    400 var(--font-size-body)/1.85 "DM Sans",
     sans-serif;
 }
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   font-family: "Oswald", sans-serif;
   color: var(--plum);
   font-weight: 500;
 }
 
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+}
+
+h6 {
+  font-size: var(--font-size-h6);
+}
+
+.heading-display {
+  font-size: var(--font-size-display);
+}
+
+.heading-compact {
+  font-size: var(--font-size-h3);
+}
+
+.heading-callout {
+  font-size: var(--font-size-callout);
+}
+
 p {
   font: inherit;
   line-height: 1.5;
+}
+
+.hero-copy > p:not(.eyebrow) {
+  font-size: var(--font-size-lead);
+}
+
+.features-list li,
+.benefits-list li {
+  font:
+    500 var(--font-size-list)/1.8 "DM Sans",
+    sans-serif;
+}
+
+.coverage p {
+  font-size: var(--font-size-list);
+}
+
+.cta-button {
+  font:
+    600 var(--font-size-button)/1.5 "Oswald",
+    sans-serif;
+}
+
+.site-footer {
+  font-size: var(--font-size-small);
+}
+
+/* Keep the mobile heading size here, not in the layout rules below. */
+@media (max-width: 767px) {
+  :root {
+    --font-size-h1: var(--font-size-h1-mobile);
+  }
 }
 
 a {
@@ -79,11 +172,6 @@ a:focus-visible,
   outline: 3px solid #d59763;
   outline-offset: 4px;
 }
-.container {
-  padding-right: 24px;
-  padding-left: 24px;
-}
-
 /* 2. Header */
 .site-header {
   width: 100%;
@@ -92,7 +180,7 @@ a:focus-visible,
   border-bottom: 1px solid var(--line);
 }
 .site-header > .row {
-  width: 100% !important;
+  width: 100%;
   margin: 0;
 }
 
@@ -107,8 +195,13 @@ a:focus-visible,
 }
 
 .site-header-content .navbar-brand {
+  display: block;
   padding: 0;
   margin: 0;
+}
+
+.site-header-content .navbar-brand:hover {
+  text-decoration: none;
 }
 
 .site-header-content .navbar-brand img {
@@ -118,13 +211,14 @@ a:focus-visible,
 }
 
 .site-header-title {
+  flex: 1 1 auto;
   padding: 0;
 }
 
 .site-header-title h1 {
   max-width: 900px;
+  margin: 0;
   color: var(--plum);
-  font-size: clamp(36px, 3vw, 42px);
   letter-spacing: normal;
   line-height: 1.4;
 }
@@ -164,7 +258,7 @@ a:focus-visible,
 .hero .row {
   display: flex;
   align-items: center;
-  width: 100% !important;
+  width: 100%;
 }
 
 .hero .hero-product,
@@ -187,19 +281,9 @@ a:focus-visible,
   filter: drop-shadow(0 24px 24px rgba(20, 14, 23, 0.35));
 }
 
-.eyebrow {
-  margin: 0 0 16px;
-  color: #e7c5a6;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
 .hero h2 {
   margin: 0 0 20px;
   color: #fff;
-  font-size: clamp(32px, 4.3vw, 54px);
   line-height: 1.35;
   letter-spacing: normal;
 }
@@ -208,7 +292,6 @@ a:focus-visible,
   max-width: 540px;
   margin-bottom: 28px;
   color: rgba(255, 255, 255, 0.88);
-  font-size: clamp(22px, 1.8vw, 24px);
 }
 
 /* 4. Order buttons */
@@ -223,9 +306,6 @@ a:focus-visible,
   border-radius: 4px;
   background: var(--rust);
   color: #fff !important;
-  font:
-    600 20px/1.5 "Oswald",
-    sans-serif;
   letter-spacing: 0.035em;
   text-transform: uppercase;
   text-align: center;
@@ -261,7 +341,6 @@ a:focus-visible,
   max-width: 700px;
   margin: 0;
   color: #fff;
-  font-size: clamp(24px, 3vw, 32px);
   line-height: 1.45;
 }
 
@@ -291,7 +370,6 @@ a:focus-visible,
 .features-copy h2,
 .coverage h2 {
   margin: 0 0 22px;
-  font-size: clamp(30px, 3vw, 42px);
   line-height: 1.45;
   letter-spacing: normal;
 }
@@ -308,9 +386,6 @@ a:focus-visible,
   padding: 12px 0 12px 34px;
   border-bottom: 1px solid var(--line);
   color: var(--ink);
-  font:
-    500 20px/1.6 "DM Sans",
-    sans-serif;
   list-style: none;
 }
 /* Both lists use the original icon shape without depending on a font file. */
@@ -359,7 +434,6 @@ a:focus-visible,
 .coverage p {
   margin: 0 auto 28px;
   color: #46404a;
-  font-size: 22px;
 }
 
 .coverage strong {
@@ -377,7 +451,6 @@ a:focus-visible,
   max-width: 920px;
   margin: 0 auto;
   color: var(--plum);
-  font-size: clamp(30px, 3.2vw, 36px);
   line-height: 1.5;
 }
 
@@ -428,7 +501,6 @@ a:focus-visible,
   background: #28222b;
   color: rgba(255, 255, 255, 0.75);
   text-align: center;
-  font-size: 14px;
 }
 .site-footer a {
   color: #ead2bf;
@@ -468,26 +540,8 @@ a:focus-visible,
 }
 
 /* 11. Responsive layouts and reduced motion */
-/* Medium screens: full-width sections, with image/text columns retained. */
-@media (min-width: 768px) and (max-width: 991px) {
-  .container {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
-  .site-header {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-}
-
 /* Small screens: stack the image/text sections. */
 @media (max-width: 767px) {
-  .container {
-    padding-right: 18px;
-    padding-left: 18px;
-  }
-
   .site-header {
     padding: 14px 18px;
   }
@@ -498,10 +552,6 @@ a:focus-visible,
 
   .site-header-content .navbar-brand img {
     width: 58px;
-  }
-
-  .site-header-title h1 {
-    font-size: 28px;
   }
 
   .hero {
