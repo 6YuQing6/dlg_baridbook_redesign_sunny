@@ -50,7 +50,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font:
-    400 17px/1.85 "DM Sans",
+    400 17px/2 "DM Sans",
     sans-serif;
 }
 h1,
@@ -124,7 +124,7 @@ a:focus-visible,
 .site-header-title h1 {
   max-width: 900px;
   color: var(--plum);
-  font-size: clamp(22px, 3vw, 36px);
+  font-size: clamp(36px, 3vw, 42px);
   letter-spacing: normal;
   line-height: 1.4;
 }
@@ -188,9 +188,9 @@ a:focus-visible,
 }
 
 .eyebrow {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   color: #e7c5a6;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -208,7 +208,7 @@ a:focus-visible,
   max-width: 540px;
   margin-bottom: 28px;
   color: rgba(255, 255, 255, 0.88);
-  font-size: clamp(18px, 1.8vw, 21px);
+  font-size: clamp(22px, 1.8vw, 24px);
 }
 
 /* 4. Order buttons */
@@ -261,7 +261,7 @@ a:focus-visible,
   max-width: 700px;
   margin: 0;
   color: #fff;
-  font-size: clamp(22px, 3vw, 31px);
+  font-size: clamp(24px, 3vw, 32px);
   line-height: 1.45;
 }
 
@@ -291,7 +291,7 @@ a:focus-visible,
 .features-copy h2,
 .coverage h2 {
   margin: 0 0 22px;
-  font-size: clamp(27px, 3vw, 36px);
+  font-size: clamp(30px, 3vw, 42px);
   line-height: 1.45;
   letter-spacing: normal;
 }
@@ -309,7 +309,7 @@ a:focus-visible,
   border-bottom: 1px solid var(--line);
   color: var(--ink);
   font:
-    500 18px/1.8 "DM Sans",
+    500 20px/1.6 "DM Sans",
     sans-serif;
   list-style: none;
 }
@@ -359,7 +359,7 @@ a:focus-visible,
 .coverage p {
   margin: 0 auto 28px;
   color: #46404a;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .coverage strong {
@@ -377,7 +377,7 @@ a:focus-visible,
   max-width: 920px;
   margin: 0 auto;
   color: var(--plum);
-  font-size: clamp(23px, 3.2vw, 36px);
+  font-size: clamp(30px, 3.2vw, 36px);
   line-height: 1.5;
 }
 
@@ -501,7 +501,7 @@ a:focus-visible,
   }
 
   .site-header-title h1 {
-    font-size: 21px;
+    font-size: 28px;
   }
 
   .hero {
