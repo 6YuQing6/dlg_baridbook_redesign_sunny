@@ -34,16 +34,6 @@ ul {
   margin: 0 0 10px;
 }
 
-/* Retained image helper used by the inside-page product image. */
-.img-responsive {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  padding: 10px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 /* Print-only behavior; never changes the screen layout. */
 @media print {
   *,

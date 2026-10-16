@@ -271,10 +271,12 @@ a:focus-visible,
 .hero .hero-product {
   display: flex;
   justify-content: center;
+  align-self: stretch;
 }
 
 .hero-product img {
-  max-height: 560px;
+  height: 100%;
+  max-height: 700px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
@@ -358,13 +360,13 @@ a:focus-visible,
 .features-row {
   display: flex;
   align-items: center;
-  gap: 42px;
+  gap: 52px;
 }
 
 .features-copy,
 .features-image {
   float: none;
-  width: 50%;
+  width: 100%;
 }
 
 .features-copy h2,
@@ -405,14 +407,15 @@ a:focus-visible,
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 .features-image img {
-  height: 420px;
+  height: 100%;
   width: auto;
   max-width: 100%;
-  padding: 8px;
   object-fit: contain;
+  border: 1px solid var(--line);
 }
 
 /* 7. Coverage */
@@ -497,7 +500,7 @@ a:focus-visible,
 
 /* 10. Footer */
 .site-footer {
-  padding: 34px 24px 28px;
+  padding: 24px 24px 28px;
   background: #28222b;
   color: rgba(255, 255, 255, 0.75);
   text-align: center;
@@ -526,7 +529,7 @@ a:focus-visible,
 }
 
 .footer-brand {
-  margin: 20px auto 12px;
+  margin: 12px auto 12px;
 }
 
 .footer-brand img {
@@ -571,7 +574,7 @@ a:focus-visible,
   }
 
   .hero-product img {
-    max-height: 370px;
+    max-height: 400px;
   }
 
   .hero-copy {
@@ -608,10 +611,6 @@ a:focus-visible,
   .benefits-copy,
   .benefits-art {
     width: 100%;
-  }
-
-  .features-image img {
-    height: 350px;
   }
 
   .benefits-section {
