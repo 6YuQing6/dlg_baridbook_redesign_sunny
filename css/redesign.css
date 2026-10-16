@@ -18,6 +18,13 @@
  */
 
 /* 1. Colors and base typography */
+/* Include padding and borders in declared sizes, even without Bootstrap's reset. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --ink: #29252e;
   --muted: #665e68;
@@ -29,6 +36,8 @@
   --surface: #ffffff;
   --line: #ded6cd;
   --soft-plum: #eee9ef;
+  /* Original filled-circle checkmark, embedded so no icon-font download is needed. */
+  --checkmark-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%201200%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20transform%3D%22translate%280%201200%29%20scale%281%20-1%29%22%20d%3D%22M600%201177q117%200%20224%20-45.5t184.5%20-123t123%20-184.5t45.5%20-224t-45.5%20-224t-123%20-184.5t-184.5%20-123t-224%20-45.5t-224%2045.5t-184.5%20123t-123%20184.5t-45.5%20224t45.5%20224t123%20184.5t184.5%20123t224%2045.5zM546%20623l-84%2085q-7%207%20-17.5%207t-18.5%20-7l-139%20-139q-7%20-8%20-7%20-18t7%20-18%20l242%20-241q7%20-8%2017.5%20-8t17.5%208l375%20375q7%207%207%2017.5t-7%2018.5l-139%20139q-7%207%20-17.5%207t-17.5%20-7z%22%2F%3E%3C%2Fsvg%3E");
 }
 
 html {
@@ -304,7 +313,7 @@ a:focus-visible,
     sans-serif;
   list-style: none;
 }
-/* Both lists use the original filled-circle icon and the same orange. */
+/* Both lists use the original icon shape without depending on a font file. */
 .features-list li::before,
 .benefits-list li::before {
   position: absolute;
@@ -312,12 +321,10 @@ a:focus-visible,
   left: 0;
   width: 19px;
   height: 19px;
-  color: var(--rust);
-  content: "\e084";
-  font: normal 19px/1 "Glyphicons Halflings";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  content: "";
+  background-color: var(--rust);
+  -webkit-mask: var(--checkmark-icon) center / contain no-repeat;
+  mask: var(--checkmark-icon) center / contain no-repeat;
 }
 .features-image {
   display: flex;
